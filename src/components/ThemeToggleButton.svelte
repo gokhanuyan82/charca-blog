@@ -3,11 +3,15 @@
   const themes = ['light', 'dark'];
   let theme = ''
 
-  if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-    theme = localStorage.getItem('theme');
-  } else if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  if (typeof window !== 'undefined') {
+  const storedTheme = window.localStorage.getItem('theme');
+
+  if (storedTheme) {
+    theme = storedTheme;
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     theme = 'dark';
   }
+}
 
   function handleChange(event) {
     theme = event.target.value;
