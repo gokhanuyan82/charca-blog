@@ -9,6 +9,11 @@ import rehypeExternalLinks from 'rehype-external-links'
 export default defineConfig({
   site: 'https://blog.mentora.tr',
   integrations: [mdx(), svelte()],
+  server: {
+    allowedHosts: ['blog.mentora.tr'],
+    port: 4321,
+    host: true,
+  },
   markdown: {
     shikiConfig: {
       theme: 'nord',
